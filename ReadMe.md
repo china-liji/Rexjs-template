@@ -111,6 +111,8 @@ setTimeout(() => {
 
 -----
 
+#### 特殊说明，该模板解析器，目前只支持单向数据绑定，并不支持双向数据绑定。
+
 #### 相关产品
 * [`Rexjs`](https://github.com/china-liji/Rexjs) - 是一款又快、又小、性价比极高的 JavaScript(ES6+) 语法的编译器！
 
