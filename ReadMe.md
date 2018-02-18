@@ -1,5 +1,16 @@
 ### Rexjs-Template - 是一种具有数据绑定功能的 html 模板解析器
+
 ------
+
+#### 下载安装
+* npm - `npm install rexjs-template`
+
+* git - `git clone https://github.com/china-liji/Rexjs-Template`
+
+* Zip - [`https://github.com/china-liji/Rexjs-Template/archive/master.zip`](https://github.com/china-liji/Rexjs-Template/archive/master.zip)
+
+------
+
 #### 快速使用
 `./temp.html`
 ```html
