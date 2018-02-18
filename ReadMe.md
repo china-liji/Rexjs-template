@@ -75,7 +75,7 @@ setTimeout(() => {
 		
 	</span>
 	<br>
-	<ul class="my-url-class">
+	<ul class="my-ul-class-gd6">
 		
 			<li>0</li>
 		
