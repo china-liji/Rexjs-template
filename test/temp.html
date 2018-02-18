@@ -1,0 +1,22 @@
+<div onclick="
+	<%= this.onclick %>
+">
+	<!-- 1233 /* js comment */ -->
+	<span data-key="<%= this.key %>" >
+		<%= this.text %>
+	</span>
+	<% if(this.isRed){ %>
+		<p><%= this.red %></p>
+	<% }else{ %>444
+		<p><%= this.blue %></p>
+	<% } %>
+	<br />
+	<% for(var i = 0, j =this.arr.length;i <j;i++){ %>
+		<%= this.value + this.arr[i] %>
+		<br />
+	<% } %>
+	<p data-size='<% 123%><%= this.bigSize + "p" %><%= "x" %>'>
+		<%= this.bigSize %>
+	</p>
+	"<%= 999 %>"
+</div>
