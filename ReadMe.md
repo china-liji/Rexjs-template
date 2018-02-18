@@ -12,7 +12,7 @@
 		<% } %>
 	</span>
 	<br />
-	<ul class="my-url-class">
+	<ul class="my-ul-class">
 		<% for(var i = 0;i < 3;i++){ %>
 			<li><%= i %></li>
 		<% } %>
@@ -112,7 +112,7 @@ setTimeout(() => {
 -----
 
 #### 相关产品
-* `Rexjs`（https://github.com/china-liji/Rexjs） - 是一款又快、又小、性价比极高的 JavaScript(ES6+) 语法的编译器！
+* [`Rexjs`](https://github.com/china-liji/Rexjs) - 是一款又快、又小、性价比极高的 JavaScript(ES6+) 语法的编译器！
 
 -----
 ### 谢谢使用
