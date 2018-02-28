@@ -1,4 +1,5 @@
 import { RexjsTemplate } from "../source/rexjs-template.js";
+
 import temp from "./temp.html";
 
 let data = {

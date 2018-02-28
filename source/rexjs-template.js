@@ -740,7 +740,7 @@ this.ActionCompiler = function(
 			var tagName = element.tagName;
 
 			// 如果是模板语法脚本
-			if(tagName === "SCRIPT" && element.getAttribute("type") === "rex/template"){
+			if(tagName === "SCRIPT" && element.getAttribute("type") === "rexjs/template"){
 				// 编译脚本
 				this.compileScript(
 					element.childNodes[0],
@@ -950,7 +950,7 @@ this.ActionCompiler = function(
 				}
 
 				// 替换语法标签
-				return content.trim() ? `<script type="rex/template" data-modifier="${modifier}"}>${content}</script>` : "";
+				return content.trim() ? `<script type="rexjs/template" data-modifier="${modifier}"}>${content}</script>` : "";
 			});
 		};
 	};
@@ -999,7 +999,7 @@ this.ActionCompiler = function(
 				return true;
 
 			// 如果是脚本，但是不是格式化后的语法脚本
-			case firstElement.getAttribute("type") === "rex/template":
+			case firstElement.getAttribute("type") === "rexjs/template":
 				return true;
 		}
 
