@@ -404,7 +404,7 @@ this.DOMAction = DOMAction = function(Node, appendTo){
 			}
 
 			// 集合中替换当前节点
-			this.clones.splice(-1, 1, node);
+			this.clones.splice(this.count - 1, 1, node);
 			// 父节点中替换当前节点
 			dom.parentNode.replaceChild(node, dom);
 		};
