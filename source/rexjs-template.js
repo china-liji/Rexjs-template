@@ -1,4 +1,4 @@
-export let { RexjsTemplate } = new function(DOMAction, ELEMENT_NODE, SYNTAX_REGEXP, document, screen, createdDocument, setTimeout, forEach, throwError, formatText){
+export let { RexjsTemplate } = new function(DOMAction, ELEMENT_NODE, SYNTAX_REGEXP, document, screen, createdDocument, setTimeout, forEach, removeChild, throwError, formatText){
 
 this.Reference = function(refs, is){
 	return class Reference {
@@ -272,7 +272,7 @@ this.Data = function(Reference, STATUS_NONE, STATUS_OVERRIDE, keys){
 	Object.keys
 );
 
-this.DOMAction = DOMAction = function(Node, appendTo){
+this.DOMAction = DOMAction = function(Node, appendTo, removeNodeIfNeed){
 	return class DOMAction {
 		/**
 		 * 子节点实例在 ActionList 中的索引值集合
@@ -343,6 +343,10 @@ this.DOMAction = DOMAction = function(Node, appendTo){
 				appendTo(clone, actionList, parentDomAction);
 				// 添加到记录中
 				clones.push(clone);
+			}
+			else {
+				// 移除满足条件的节点
+				removeNodeIfNeed(this, actionList, parentDomAction);
 			}
 
 			// 将当前实例于 actionList 中的索引值记录在父节点实例上
@@ -448,12 +452,7 @@ this.DOMAction = DOMAction = function(Node, appendTo){
 				// 如果长度不一致
 				default:
 					// 从 clones 中删除
-					clones.splice(count).forEach((clone) => {
-						var parentNode = clone.parentNode;
-
-						// 移除节点
-						parentNode && parentNode.removeChild(clone);
-					});
+					clones.splice(count).forEach(removeChild);
 					break;
 			}
 
@@ -488,6 +487,40 @@ this.DOMAction = DOMAction = function(Node, appendTo){
 
 		// 追加到最后
 		parentDom.appendChild(clone);
+	},
+	// removeNodeIfNeed
+	(action, actionList, parentDomAction) => {
+		var { indexOf, count, clones } = action;
+
+		// 如果不根节点
+		if(action.index > 1){
+			// 如果不存在于文档中
+			if(!actionList[1].dom.contains(clones[count])){
+				// 移除
+				clones.splice(count, 1);
+				return;
+			}
+		}
+
+		// 如果是父节点中的第一个节点
+		if(indexOf === 0){
+			return;
+		}
+
+		var indexBy = parentDomAction.indexBy;
+
+		// 如果上一次添加的节点不是当前节点的兄弟节点，说明中间有部分节点被移除
+		while(indexOf > ++indexBy){
+			let { clones: cls, count: ct } = actionList[parentDomAction.childIndexes[indexBy]];
+
+			// 如果存在节点
+			if(cls.length){
+				// 移除该节点
+				removeChild(
+					cls.splice(ct, 1)[0]
+				);
+			}
+		}
 	}
 );
 
@@ -1294,6 +1327,18 @@ this.RexjsTemplate = window.RexjsTemplate = function(Reference, Data, ActionComp
 	document.implementation.createHTMLDocument(""),
 	setTimeout,
 	Array.prototype.forEach,
+	// removeChild
+	(child) => {
+		var parentNode = child.parentNode;
+
+		// 如果父节点存在
+		if(parentNode){
+			parentNode.removeChild(child);
+		}
+
+		// 清空内容
+		child.textCOntent = "";
+	},
 	// throwError
 	(error, template) => {
 		var subTemplate = template.split("\n").slice(0, 5).join("\n");

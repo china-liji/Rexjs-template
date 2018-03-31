@@ -26,6 +26,7 @@ document.querySelector("body > div").appendChild(
 setTimeout(() => {
 	// 修改数据
 	data.blue = "#22f";
+	data.arr[1] = -1;
 
 	// 主动刷新数据
 	RexjsTemplate.refresh(data);

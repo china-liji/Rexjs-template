@@ -1,6 +1,6 @@
 {
 	"name": "rexjs-template",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "一款具有数据绑定功能的 html 模板解析器",
 	"scripts": {
 		"start": "node node/server.js",
@@ -26,7 +26,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"rexjs-api": "^1.6.13",
+		"rexjs-api": "^1.6.33",
 		"rexjs-filecopy": "^1.0.2",
 		"rexjs-loader": "^1.1.9",
 		"rexjs-simple-server": "^1.0.2",

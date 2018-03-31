@@ -98,6 +98,50 @@ setTimeout(() => {
 </div>
 ```
 
+#### 模板使用说明
+* 如何插入 `JavaScript` 语法
+在标签的 `innerHTML` 中使用 `<% %>` 进行标记，但并不支持在标签**属性**或**属性值**上使用。
+
+```html
+<% if(true){ %>
+	<span class="abc"></span>
+<% } else { %>
+	<span class="xyz"></span>
+<% } %>
+```
+
+* 如何输出 `JavaScript` 表达式的值
+在标签的 `innerHTML` 或 **属性值** 中使用 `<%= %>`，但并不支持在标签**属性名**上使用。
+```html
+<span class="<%= true ? 'abc' : 'xyz' %>" onclick="<%= function(){ alert('clicked'); } %>">
+	<%= true ? 123 : 789 %>
+</span>
+
+<!-- 事件属性上，如果存在 <%= %> 之外的非空白字符，则会按字符串拼接处理，而不会进行事件绑定处理 -->
+<span onclick="this.<%= function(){ alert('clicked'); %>"</span>
+
+<!-- 可以在非注释中添加 debugger 进行模板数据调试 -->
+<% debugger %>
+```
+
+* 如何获取传入的数据
+在**模板标记**中，使用 `this` 关键字进行获取。
+
+``` html
+<span class="<%= this.ok ? 'abc' : 'xyz' %>" onclick="<%= this.onclick %>">
+	<%= this.ok ? 123 : 789 %>
+</span>
+```
+
+* 如何动态绑定 `DOM`
+在标签的 `innerHTML` 中使用 `<%: %>`，但并不支持在标签**属性**或**属性值**上使用。
+
+``` html
+<span>
+	<%: document.createTextNode("hello world") %>
+</span>
+```
+
 #### 属性
 `RexjsTemplate.watching`：是否处于自动监听数据中。
 * `@type {Boolean}`

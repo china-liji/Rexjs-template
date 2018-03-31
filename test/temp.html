@@ -16,6 +16,10 @@
 	<% for(var i = 0, j =this.arr.length;i <j;i++){ %>
 		<%= this.value + this.arr[i] %>
 		<br />
+		<% if(this.arr[i] > 0){ %>
+			<span style="color:red;"><%= i %></span>
+		<% } %>
+		<br />
 	<% } %>
 	<p data-size='<% 123%><%= this.bigSize + "p" %><%= "x" %>'>
 		<%= this.bigSize %>
