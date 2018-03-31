@@ -1,6 +1,6 @@
 {
 	"name": "rexjs-template",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "一款具有数据绑定功能的 html 模板解析器",
 	"scripts": {
 		"start": "node node/server.js",

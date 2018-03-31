@@ -100,6 +100,7 @@ setTimeout(() => {
 
 #### 模板使用说明
 * 如何插入 `JavaScript` 语法
+
 在标签的 `innerHTML` 中使用 `<% %>` 进行标记，但并不支持在标签**属性**或**属性值**上使用。
 
 ```html
@@ -111,6 +112,7 @@ setTimeout(() => {
 ```
 
 * 如何输出 `JavaScript` 表达式的值
+
 在标签的 `innerHTML` 或 **属性值** 中使用 `<%= %>`，但并不支持在标签**属性名**上使用。
 ```html
 <span class="<%= true ? 'abc' : 'xyz' %>" onclick="<%= function(){ alert('clicked'); } %>">
@@ -125,6 +127,7 @@ setTimeout(() => {
 ```
 
 * 如何获取传入的数据
+
 在**模板标记**中，使用 `this` 关键字进行获取。
 
 ``` html
@@ -134,6 +137,7 @@ setTimeout(() => {
 ```
 
 * 如何动态绑定 `DOM`
+
 在标签的 `innerHTML` 中使用 `<%: %>`，但并不支持在标签**属性**或**属性值**上使用。
 
 ``` html
